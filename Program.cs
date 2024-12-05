@@ -1,28 +1,34 @@
-using BookCatalogApp.Models;
 using Microsoft.EntityFrameworkCore;
+using NewspapersApp.Data;
+using NewspapersApp.Repositories;
+using NewspapersApp.Services;
+using WAD._00016004.Data;
+using WAD._00016004.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add DbContext (for SQL Server)
-builder.Services.AddDbContext<ApplicationDbContext>(options =>
-    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));  // Update with your connection string
-
-// Add controllers
+// Add services to the container.
 builder.Services.AddControllers();
+builder.Services.AddDbContext<ApplicationDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IBookService, BookService>();
 
 // Add Swagger for API documentation
+builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
-// Use Swagger only in Development environment
+// Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();     // Enable Swagger
-    app.UseSwaggerUI();   // Enable Swagger UI
+    app.UseSwagger();
+    app.UseSwaggerUI();
 }
 
 app.UseHttpsRedirection();
+
 app.MapControllers();
 
 app.Run();
