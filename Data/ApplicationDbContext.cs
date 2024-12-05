@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using BookCatalogApp.Models;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 
-namespace BookCatalogApp.Models
+namespace WAD._00016004.Data
 {
     public class ApplicationDbContext : DbContext
     {
@@ -11,6 +12,6 @@ namespace BookCatalogApp.Models
         }
 
         public DbSet<Book> Books { get; set; }
-        public DbSet<Category> Categories { get; set; }
     }
 }
+
