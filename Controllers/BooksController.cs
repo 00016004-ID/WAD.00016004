@@ -8,7 +8,7 @@ namespace WAD._00016004.Controllers
     [Route("api/[controller]")]
     [ApiController]
     public class BooksController : ControllerBase
-    {
+    {//00016004
         private readonly IBookService _bookService;
 
         public BooksController(IBookService bookService)
@@ -16,7 +16,7 @@ namespace WAD._00016004.Controllers
             _bookService = bookService;
         }
 
-        // GET: api/Books
+        // GET: api/Books/00016004
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Book>>> GetBooks()
         {
@@ -63,6 +63,6 @@ namespace WAD._00016004.Controllers
         {
             await _bookService.DeleteBookAsync(id);
             return NoContent();
-        }
+        }//00016004
     }
 }

@@ -1,7 +1,7 @@
 ﻿using BookCatalogApp.Models;
 
 namespace WAD._00016004.Services
-{
+{//00016004
     public interface IBookService
     {
         Task<IEnumerable<Book>> GetAllBooksAsync();
@@ -10,4 +10,4 @@ namespace WAD._00016004.Services
         Task UpdateBookAsync(Book book);
         Task DeleteBookAsync(int id);
     }
-}
+}//00016004

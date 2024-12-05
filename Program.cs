@@ -2,8 +2,7 @@ using Microsoft.EntityFrameworkCore;
 using WAD._00016004.Data;
 using WAD._00016004.Repositories;
 using WAD._00016004.Services;
-using WAD._00016004.Data;
-using WAD._00016004.Repositories;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
