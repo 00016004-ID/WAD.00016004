@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using NewspapersApp.Data;
-using NewspapersApp.Repositories;
-using NewspapersApp.Services;
+using WAD._00016004.Data;
+using WAD._00016004.Repositories;
+using WAD._00016004.Services;
 using WAD._00016004.Data;
 using WAD._00016004.Repositories;
 
