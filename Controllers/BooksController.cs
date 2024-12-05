@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using BookCatalogApp.Models;  // Assuming your models are in a folder called 'Models'
+using BookCatalogApp.Models;  // Import models
 
 namespace BookCatalogApp.Controllers
 {
@@ -56,21 +56,7 @@ namespace BookCatalogApp.Controllers
             }
 
             _context.Entry(book).State = EntityState.Modified;
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!BookExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            await _context.SaveChangesAsync();
 
             return NoContent();
         }
@@ -89,11 +75,6 @@ namespace BookCatalogApp.Controllers
             await _context.SaveChangesAsync();
 
             return NoContent();
-        }
-
-        private bool BookExists(int id)
-        {
-            return _context.Books.Any(e => e.BookID == id);
         }
     }
 }
